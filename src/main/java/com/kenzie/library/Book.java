@@ -2,17 +2,20 @@ package com.kenzie.library;
 
 //import java.util.ArrayList; // import the ArrayList class
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+
 public class Book {
 
     // Instance Variables
     private String title;
     private String author;
-    private String genre;
+    private Genre genre;
     private String[] pages;
     private int currentPageNumber;
 
     // Constructor Method
-    public Book(String title, String author, String genre, String[] pages) {
+    public Book(String title, String author, Genre genre, String[] pages) {
 
         // Initial instance variable values
         this.title = title;
@@ -24,7 +27,7 @@ public class Book {
     // Add methods to Book Class
 
     public int getCurrentPageNumber(){
-        return currentPageNumber;
+        return currentPageNumber + 1;
     }
 
     public String nextPage(){
@@ -82,6 +85,13 @@ public class Book {
         return pages.length;
     }
 
+    public double getPercentageComplete(){
+        float x = currentPageNumber + 1;
+        float y = pages.length;
+        double percentage = (x/y)*100.0;
+        return Math.round(percentage*10.0)/10.0;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -90,7 +100,7 @@ public class Book {
         return author;
     }
 
-    public String getGenre() {
+    public Genre getGenre() {
         return genre;
     }
 
