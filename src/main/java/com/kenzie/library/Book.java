@@ -1,6 +1,6 @@
 package com.kenzie.library;
 
-import java.util.ArrayList; // import the ArrayList class
+//import java.util.ArrayList; // import the ArrayList class
 
 public class Book {
 
@@ -51,27 +51,28 @@ public class Book {
     }
 
     public String tearOutCurrentPage(){
-        //save contents of page before being torn out
-        String tornPage = pages[currentPageNumber];
-
-        //remove the current page
+        //Conditional if there are no more pages to tear out
         if (pages.length < 1){
             return "There are no more pages to tear out!";
         }
 
+        //Save contents of page before being torn out
+        String tornPage = pages[currentPageNumber];
+
+        //Remove the current page
         String[] newBook = new String[pages.length - 1];
-        for (int page = 0; page < pages.length; page++){
+        for (int page = 0; page < pages.length - 1; page++){
             if (page != currentPageNumber){
                 newBook[page] = pages[page];
             }
         }
         pages = newBook;
 
-
-        //current page should now point to the next one, if there is one
-        //if (currentPageNumber = pages.length){
-           // currentPageNumber --;
-        //}
+        //Current page should now point to the next one.
+        //If last page in the book is torn out, currentPageNumber --
+        if (currentPageNumber == pages.length){
+            currentPageNumber --;
+        }
 
         //return the text of the current page
         return tornPage;
@@ -80,9 +81,6 @@ public class Book {
     public int getNumPages() {
         return pages.length;
     }
-
-
-
 
     public String getTitle() {
         return title;
@@ -95,7 +93,6 @@ public class Book {
     public String getGenre() {
         return genre;
     }
-
 
 
 }
