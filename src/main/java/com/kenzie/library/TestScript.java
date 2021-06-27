@@ -10,15 +10,7 @@ public class TestScript {
         System.out.println(myBook.getGenre());
         System.out.println("Number of pages: " + myBook.getNumPages());
         System.out.println(myBook.openPage(1));
-        System.out.println(myBook.nextPage());
-        System.out.println(myBook.nextPage());
-        System.out.println(myBook.nextPage());
-        System.out.println(myBook.openPage());
-        System.out.println(myBook.prevPage());
-        System.out.println(myBook.prevPage());
-        System.out.println(myBook.prevPage());
-        System.out.println(myBook.prevPage());
-        System.out.println(myBook.prevPage());
+        System.out.println(myBook.tearOutCurrentPage());
     }
 
 }
