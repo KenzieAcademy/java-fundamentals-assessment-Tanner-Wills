@@ -28,18 +28,17 @@ public class Book {
     }
 
     public String nextPage(){
-        if (getCurrentPageNumber() < pages.length - 1){
+        if (currentPageNumber < pages.length - 1){
             currentPageNumber ++;
-            return pages[getCurrentPageNumber() + 1];
+            return pages[currentPageNumber];
         }
-
         return "You have reached the end of the book!";
     }
 
     public String prevPage(){
-        if (getCurrentPageNumber() > 0){
+        if (currentPageNumber > 0){
             currentPageNumber --;
-            return pages[getCurrentPageNumber() - 1];
+            return pages[currentPageNumber];
         }
         return "You are on the first page of the book!";
     }
