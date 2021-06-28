@@ -1,9 +1,5 @@
 package com.kenzie.library;
 
-//import java.util.ArrayList; // import the ArrayList class
-
-import java.math.BigDecimal;
-import java.text.DecimalFormat;
 
 public class Book {
 
@@ -103,6 +99,6 @@ public class Book {
     public Genre getGenre() {
         return genre;
     }
-//adding comment
+
 
 }
