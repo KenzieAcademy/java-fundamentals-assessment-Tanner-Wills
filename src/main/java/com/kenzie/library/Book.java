@@ -1,5 +1,6 @@
 package com.kenzie.library;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 public class Book {
 
@@ -31,7 +32,7 @@ public class Book {
             currentPageNumber ++;
             return pages[currentPageNumber];
         }
-        return "You have reached the end of the book!";
+        return null;
     }
 
     public String prevPage(){
@@ -39,33 +40,32 @@ public class Book {
             currentPageNumber --;
             return pages[currentPageNumber];
         }
-        return "You are on the first page of the book!";
+        return null;
     }
 
     public String openPage(int pageNumber){
-        if (pageNumber < 1){
-            return pages[0];
+        currentPageNumber = pageNumber;
+        return pages[currentPageNumber];
         }
-        return pages[pageNumber - 1];
-    }
+
+
 
     public String tearOutCurrentPage(){
         //Conditional if there are no more pages to tear out
         if (pages.length < 1){
-            return "There are no more pages to tear out!";
+            return null;
         }
 
         //Save contents of page before being torn out
         String tornPage = pages[currentPageNumber];
 
         //Remove the current page
-        String[] newBook = new String[pages.length - 1];
+        ArrayList<String> newBook = new ArrayList<>();
         for (int page = 0; page < pages.length - 1; page++){
             if (page != currentPageNumber){
-                newBook[page] = pages[page];
+                newBook.add(pages[page]);
             }
         }
-        pages = newBook;
 
         //Current page should now point to the next one.
         //If last page in the book is torn out, currentPageNumber --
@@ -81,7 +81,7 @@ public class Book {
         return pages.length;
     }
 
-    public int getPercentageComplete(){
+    public int getPercentComplete(){
         int x = currentPageNumber + 1;
         int y = pages.length;
         return (x/y)*100;
