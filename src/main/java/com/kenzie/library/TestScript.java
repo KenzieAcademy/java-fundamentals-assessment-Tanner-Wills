@@ -18,13 +18,14 @@ public class TestScript {
         library.addBook(myBook3);
         library.addBook(myBook);
 
-        library.checkoutBook("Sorcerer's Stone");
+        //library.checkoutBook("Sorcerer's Stone");
 
 
-        for(String book: library.listBooks(Genre.FANTASY)) {
-            System.out.println(book);
-        }
+        //for(String book: library.listBooks(Genre.FANTASY)) {
+        //    System.out.println(book);
+        //}
         library.listAvailableBooks();
+        library.listAvailableBooks(Genre.FANTASY);
 
 
 

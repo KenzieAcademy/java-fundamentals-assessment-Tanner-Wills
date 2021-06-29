@@ -69,6 +69,32 @@ public class Library {
         return availableBooks;
     }
 
+    public String[] listAvailableBooks(Genre genre){
+        int availableSizeGenre = 0;
+        for(Book availableGenre : libraryContents){
+            if(!booksCheckedOut.contains(availableGenre.getTitle()) && genre == availableGenre.getGenre()){
+                availableSizeGenre ++;
+            }
+        }
+        String[] availableBooksGenre = new String[availableSizeGenre];
+        int availableCountGenre = 0;
+        for(Book book : libraryContents){
+            if(!booksCheckedOut.contains(book.getTitle()) && genre == book.getGenre()){
+                availableBooksGenre[availableCountGenre] = book.getTitle();
+                availableCountGenre ++;
+            }
+        }
+        return availableBooksGenre;
+    }
+
+    public boolean hasBook(String bookTitle){
+        for(Book book: libraryContents){
+            if(book.getTitle() == bookTitle){
+                return true;
+            }
+        }
+        return false;
+    }
 
     public Book checkoutBook(String bookTitle){
         //Loop through libraryContents to see if bookTitle is in there
@@ -91,6 +117,7 @@ public class Library {
     public void returnBook(Book book){
         libraryContents.remove(book);
     }
+
     }
 
 
