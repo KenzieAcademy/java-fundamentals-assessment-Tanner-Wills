@@ -4,14 +4,15 @@ import java.util.ArrayList;
 
 public class Library {
 
-    private ArrayList<Object> libraryContents;
+    private ArrayList<Book> libraryContents;
     private ArrayList<String> booksCheckedOut;
     private Object Book;
 
 
+
     //Constructor
     public Library(){
-        this.libraryContents = new ArrayList<Object>();
+        this.libraryContents = new ArrayList<Book>();
         this.booksCheckedOut = new ArrayList<String>();
     }
 
@@ -38,19 +39,17 @@ public class Library {
 
     public Book checkoutBook(String bookTitle){
         //Loop through libraryContents to see if bookTitle is in there
-        for (int i = 0; i < libraryContents.size(); i++){
-            Book currentBook = (Book) libraryContents.get(i);
+        for (Book currentBook : libraryContents){
             String currentTitle = currentBook.getTitle();
 
-            if (bookTitle == currentTitle && !booksCheckedOut.contains(bookTitle)) {
-                booksCheckedOut.add(bookTitle);
-                System.out.println("book checked out");
-                return currentBook;
+            if (bookTitle == currentTitle && booksCheckedOut.contains(bookTitle)) {
+                throw new BookNotAvailableException(bookTitle);
             }
 
-            else if (bookTitle == currentTitle && booksCheckedOut.contains(bookTitle)){
-                System.out.println("test");
-                throw new BookNotAvailableException(bookTitle);
+            if (bookTitle == currentTitle && !booksCheckedOut.contains(bookTitle)){
+                booksCheckedOut.add(bookTitle);
+                System.out.println(bookTitle + " has been checked out!");
+                return currentBook;
                 }
             }
         throw new BookNotFoundException(bookTitle);

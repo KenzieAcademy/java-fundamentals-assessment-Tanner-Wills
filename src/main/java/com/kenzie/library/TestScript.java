@@ -12,8 +12,9 @@ public class TestScript {
 
         Library library = new Library();
         library.addBook(myBook);
+
         library.checkoutBook("Sorcerer's Stone");
-        library.checkoutBook("Scorcerer's Stone");
+        library.checkoutBook("Sorcerer's Stone");
 
 
 
