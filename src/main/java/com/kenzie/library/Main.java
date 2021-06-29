@@ -1,6 +1,6 @@
 package com.kenzie.library;
 import java.util.Arrays;
-/*
+
 public class Main {
     public static void main(String[] args) {
         Library library = new Library();
@@ -94,6 +94,5 @@ EBook
 ** increaseFontSize()
 ** decreaseFontSize()
 ** getPercentageComplete()
+*/
 
-
- */
