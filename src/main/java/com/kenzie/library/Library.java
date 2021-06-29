@@ -1,5 +1,6 @@
 package com.kenzie.library;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class Library {
@@ -20,22 +21,54 @@ public class Library {
     public void addBook(Book book){
         libraryContents.add(book);
     }
-/*
-    public String[] listBooks(){
-        String[] bookList = new String[libraryContents.size()];
-        if (libraryContents.size() > 0){
-            for (int book = 0; book <= libraryContents.size(); book++){
-                Book currentBook = (Book) libraryContents.get(book);
-                String bookTitle = currentBook.getTitle();
-                bookList[book] = bookTitle;
 
-            }
-            } else {
-            System.out.println("There are no books in the library!");
+    public String[] listBooks(){
+        String[] titleList = new String[libraryContents.size()];
+        for (int bookT = 0; bookT < libraryContents.size(); bookT++){
+            String  bookTitle = libraryContents.get(bookT).getTitle();
+            titleList[bookT] = bookTitle;
         }
-        return System.out.println(bookList);;
+        return titleList;
     }
-*/
+
+    public String[] listBooks(Genre genre){
+        //Loop through library contents to count how many times the genre occurs
+        int genreCount = 0;
+        for(Book book : libraryContents){
+            if(genre == book.getGenre()){
+                genreCount ++;
+            }
+        }
+        //Create list of size genreCount and populate the list
+        String[] genreList = new String[genreCount];
+        int indexCount = 0;
+        for (Book bookG : libraryContents){
+            if(genre == bookG.getGenre()){
+                genreList[indexCount] = bookG.getTitle();
+                indexCount ++;
+            }
+        }
+        return genreList;
+    }
+
+    public String[] listAvailableBooks(){
+        int availableSize = 0;
+        for(Book available : libraryContents){
+            if(!booksCheckedOut.contains(available.getTitle())){
+                availableSize ++;
+            }
+        }
+        String[] availableBooks = new String[availableSize];
+        int availableCount = 0;
+        for(Book book : libraryContents){
+            if(!booksCheckedOut.contains(book.getTitle())){
+                availableBooks[availableCount] = book.getTitle();
+                availableCount ++;
+            }
+        }
+        return availableBooks;
+    }
+
 
     public Book checkoutBook(String bookTitle){
         //Loop through libraryContents to see if bookTitle is in there
@@ -55,6 +88,9 @@ public class Library {
         throw new BookNotFoundException(bookTitle);
         }
 
+    public void returnBook(Book book){
+        libraryContents.remove(book);
+    }
     }
 
 

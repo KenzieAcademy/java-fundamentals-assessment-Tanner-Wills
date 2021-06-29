@@ -23,7 +23,7 @@ public class Book {
     // Add methods to Book Class
 
     public int getCurrentPageNumber(){
-        return currentPageNumber + 1;
+        return currentPageNumber;
     }
 
     public String nextPage(){
@@ -81,11 +81,11 @@ public class Book {
         return pages.length;
     }
 
-    public double getPercentageComplete(){
-        float x = currentPageNumber + 1;
-        float y = pages.length;
-        double percentage = (x/y)*100.0;
-        return Math.round(percentage*10.0)/10.0;
+    public int getPercentageComplete(){
+        int x = currentPageNumber + 1;
+        int y = pages.length;
+        return (x/y)*100;
+
     }
 
     public String getTitle() {
