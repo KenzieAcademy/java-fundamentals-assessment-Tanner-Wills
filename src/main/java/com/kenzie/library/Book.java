@@ -1,7 +1,7 @@
 package com.kenzie.library;
 
 import java.util.Arrays;
-public class Book {
+public class Book implements Comparable<Book>{
 
     // Instance Variables
     private String title;
@@ -99,5 +99,9 @@ public class Book {
         return genre;
     }
 
+    public int compareTo(Book book) {
+        int booktitlecompare = this.title.compareTo(book.title);
+        return booktitlecompare;
+    }
 
 }

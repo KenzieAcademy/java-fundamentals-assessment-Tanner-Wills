@@ -1,6 +1,7 @@
 package com.kenzie.library;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 
 public class Library {
@@ -8,8 +9,6 @@ public class Library {
     private ArrayList<Book> libraryContents;
     private ArrayList<String> booksCheckedOut;
     private Object Book;
-
-
 
     //Constructor
     public Library(){
@@ -20,6 +19,7 @@ public class Library {
     //Add Library methods
     public void addBook(Book book){
         libraryContents.add(book);
+        Collections.sort(libraryContents);
     }
 
     public String[] listBooks(){
