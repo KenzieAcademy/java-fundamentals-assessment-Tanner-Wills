@@ -18,6 +18,7 @@ public class TestScript {
         library.addBook(myBook3);
         library.addBook(myBook);
 
+        System.out.println(myBook.tearOutCurrentPage());
         //library.checkoutBook("Sorcerer's Stone");
 
 
@@ -26,7 +27,7 @@ public class TestScript {
         //}
         library.listAvailableBooks();
         library.listAvailableBooks(Genre.FANTASY);
-
+        System.out.print(myBook.getPercentComplete());
 
 
         //library.listBooks();

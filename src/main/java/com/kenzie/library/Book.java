@@ -1,6 +1,5 @@
 package com.kenzie.library;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 public class Book {
 
@@ -48,8 +47,6 @@ public class Book {
         return pages[currentPageNumber];
         }
 
-
-
     public String tearOutCurrentPage(){
         //Conditional if there are no more pages to tear out
         if (pages.length < 1){
@@ -60,19 +57,21 @@ public class Book {
         String tornPage = pages[currentPageNumber];
 
         //Remove the current page
-        ArrayList<String> newBook = new ArrayList<>();
-        for (int page = 0; page < pages.length - 1; page++){
+        String[] newBook = new String[pages.length - 1];
+        int pageCounter = 0;
+        for (int page = 0; page < pages.length; page++){
             if (page != currentPageNumber){
-                newBook.add(pages[page]);
+                newBook[pageCounter] = pages[page];
+                pageCounter ++;
             }
         }
+        pages = Arrays.copyOf(newBook,newBook.length);
 
         //Current page should now point to the next one.
         //If last page in the book is torn out, currentPageNumber --
         if (currentPageNumber == pages.length){
             currentPageNumber --;
         }
-
         //return the text of the current page
         return tornPage;
     }
@@ -82,9 +81,9 @@ public class Book {
     }
 
     public int getPercentComplete(){
-        int x = currentPageNumber + 1;
-        int y = pages.length;
-        return (x/y)*100;
+        float x = currentPageNumber;
+        float y = pages.length - 1;
+        return Math.round((x/y)*100);
 
     }
 
