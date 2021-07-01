@@ -12,8 +12,8 @@ public class Library {
 
     //Constructor
     public Library(){
-        this.libraryContents = new ArrayList<Book>();
-        this.booksCheckedOut = new ArrayList<String>();
+        this.libraryContents = new ArrayList<>();
+        this.booksCheckedOut = new ArrayList<>();
     }
 
     //Add Library methods
@@ -43,7 +43,7 @@ public class Library {
         String[] genreList = new String[genreCount];
         int indexCount = 0;
         for (Book bookG : libraryContents){
-            if(genre == bookG.getGenre()){
+            if(genre.equals(bookG.getGenre())){
                 genreList[indexCount] = bookG.getTitle();
                 indexCount ++;
             }
@@ -89,7 +89,7 @@ public class Library {
 
     public boolean hasBook(String bookTitle){
         for(Book book: libraryContents){
-            if(book.getTitle() == bookTitle){
+            if(book.getTitle().equals(bookTitle)){
                 return true;
             }
         }
@@ -101,13 +101,12 @@ public class Library {
         for (Book currentBook : libraryContents){
             String currentTitle = currentBook.getTitle();
 
-            if (bookTitle == currentTitle && booksCheckedOut.contains(bookTitle)) {
+            if (bookTitle.equals(currentTitle) && booksCheckedOut.contains(bookTitle)) {
                 throw new BookNotAvailableException(bookTitle);
             }
 
-            if (bookTitle == currentTitle && !booksCheckedOut.contains(bookTitle)){
+            if (bookTitle.equals(currentTitle) && !booksCheckedOut.contains(bookTitle)){
                 booksCheckedOut.add(bookTitle);
-                System.out.println(bookTitle + " has been checked out!");
                 return currentBook;
                 }
             }
@@ -115,7 +114,7 @@ public class Library {
         }
 
     public void returnBook(Book book){
-        libraryContents.remove(book);
+        booksCheckedOut.remove(book.getTitle());
     }
 
     }
